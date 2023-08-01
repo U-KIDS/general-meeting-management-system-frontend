@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Login from './UserPages/User/Login';
+import LoginFail from './UserPages/User/LoginFail';
+import Signup from './UserPages/User/Signup';
 
 function App() {
   function setScreenSize() {
@@ -16,6 +18,8 @@ function App() {
     <Router>
       <Routes>
         <Route path='/login' element={<Login />} />
+        <Route path='/loginfail' element={<LoginFail />} />
+        <Route path='/signup' element={<Signup />} />
       </Routes>
     </Router>
   );

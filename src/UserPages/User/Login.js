@@ -39,7 +39,7 @@ function Login(){
         <div className="User-container">
             <div className='circle'/>
             <img src={loginLogo} alt="login-logo" className="login-logo"/>
-            <div className='login-component'>
+            <div className='user-component'>
                 <form className="form-container" onSubmit={handleSubmit} action="/login" method="post">
                     <div className="form-div">
                         <div className="div-inputbox">
@@ -49,7 +49,7 @@ function Login(){
                             <Input type="password" value={password} onChange={setPassword} placeholder="비밀번호"/>
                         </div>
                         <button type="submit" className="submit-button">Log-in</button>
-                        <button className="sub-button">Sign-up</button>
+                        <button className="sub-button" onClick={() => navigate("/signup")}>Sign-up</button>
                     </div>                    
                 </form>      
             </div>
