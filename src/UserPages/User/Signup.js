@@ -137,7 +137,7 @@ function Signup(){
     const customStyles = {
         control: (provided) => ({
           ...provided,
-          width: '300px',
+          width: '100%',
           height: '50px',
           borderRadius: '50px',
           backgroundColor: '#FFFFFF',
@@ -183,7 +183,7 @@ function Signup(){
     return(
         <div className="User-container">
             <div className='circle'/>
-            <img src={loginLogo} alt="login-logo" className="login-logo"/>
+            <img src={loginLogo} alt="signup-logo" className="signup-logo"/>
             <div className='user-component'>
                 <form className="form-container" onSubmit={handleSubmit} action="/signup" method="post">
                     <div className="form-div">

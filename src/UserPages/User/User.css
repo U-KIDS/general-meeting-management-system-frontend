@@ -1,71 +1,82 @@
-.User-container{
+.User-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
-
-.circle{
+  
+.circle {
     background-color: #1d2532;
     width: 600px;
     height: 300px;
     border-radius: 0 0 70% 70%;
-    overflow: hidden;
+    overflow:hidden;
     z-index: 0;
     position: absolute;
-    top: 0px; 
-    left: 50%; 
+    top: 0px;
+    left: 50%;
     transform: translateX(-50%);
 }
-
-.login-logo{
+  
+.login-logo {
     width: 170px;
     height: 170px;
     position: absolute;
-    top: 5%;
-    left: calc(50% - 85px); 
+    left: calc(50% - 85px);
     z-index: 2;
+    top: calc(50vh - 350px);
 }
 
-.user-component{
+.signup-logo {
+    width: 170px;
+    height: 170px;
+    position: absolute;
+    left: calc(50% - 85px);
+    z-index: 2;
+    top: calc(50vh - 400px);
+}
+  
+.user-component {
     width: 340px;
     height: 540px;
-    border-radius: 25px; 
+    border-radius: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     position: absolute;
-    top: 50%; 
-    left: 50%; 
+    top: 50%;
+    left: 50%;
     right: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
     background-color: #ffffff;
     z-index: 1;
+    flex-direction: column;
+    padding: 50px 0 0 0;
 }
-
-.form-container{
+  
+.form-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-.form-div{
+  
+.form-div {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-.div-inputbox{
+  
+.div-inputbox {
     width: 300px;
     height: 50px;
     margin: 0 0 10px 0;
 }
-
-.user-input{
+  
+.user-input {
     width: 300px;
     height: 50px;
-    border-radius: 50px; 
+    border-radius: 50px;
     padding: 0 0 0 15px;
     display: flex;
     justify-content: center;
@@ -75,47 +86,86 @@
     font-weight: lighter;
     font-size: 14px;
 }
-
-
-.submit-button{
+  
+.submit-button {
     width: 300px;
     height: 50px;
-    border-radius: 50px; 
+    border-radius: 50px;
     background-color: #1d2532;
-    color: #FFFFFF;
+    color: #ffffff;
     box-sizing: border-box;
     font-weight: bolder;
     font-size: 20px;
-    margin: 0 0 10px 0;
+    margin: 30px 0 10px 0;
 }
-
-.sub-button{
+  
+.sub-button {
     width: 300px;
     height: 50px;
-    border-radius: 50px; 
-    background-color: #FFFFFF;
+    border-radius: 50px;
+    background-color: #ffffff;
     color: #1d2532;
     box-sizing: border-box;
     font-weight: bolder;
     font-size: 20px;
     border: solid 1px #1d2532;
 }
-
-.likelion{
+  
+.likelion {
     font-size: 12px;
     font-weight: lighter;
     color: #1d2532;
     position: absolute;
-    bottom: 20px; 
+    bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
     width: fit-content;
 }
-
-.loginFail{
+  
+.loginFail {
     font-size: 18px;
     font-weight: lighter;
     color: #1d2532;
     z-index: 10;
+}
+  
+/* 모바일 스타일 */
+@media (max-width: 600px) {
+    .login-logo {
+        width: 120px;
+        height: 120px;
+        left: calc(50% - 60px);
+        top: calc(50vh - 250px);
+    }
+
+    .signup-logo {
+        width: 120px;
+        height: 120px;
+        left: calc(50% - 60px);
+        top: calc(50vh - 350px);
+    }
+  
+    .user-component {
+        width: 80%;
+        height: auto;
+        border-radius: 25px;
+    }
+  
+    .form-div {
+        margin: 50px 0; 
+    }
+  
+    .div-inputbox {
+        width: 120%; 
+    }
+  
+    .user-input {
+        width: 100%; 
+    }
+  
+    .submit-button,
+    .sub-button {
+        width: 120%; 
+    }
 }
