@@ -4,6 +4,7 @@ import './App.css';
 import Login from './UserPages/User/Login';
 import LoginFail from './UserPages/User/LoginFail';
 import Signup from './UserPages/User/Signup';
+import MainPage from './UserPages/Main/MainPage';
 
 function App() {
   function setScreenSize() {
@@ -17,6 +18,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path='/' element={<MainPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/loginfail' element={<LoginFail />} />
         <Route path='/signup' element={<Signup />} />

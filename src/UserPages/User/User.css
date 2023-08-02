@@ -1,7 +1,8 @@
 .User-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
 }
   
@@ -34,6 +35,11 @@
     left: calc(50% - 85px);
     z-index: 2;
     top: calc(50vh - 400px);
+}
+
+.header-container{
+    min-height: 300px;
+    width: 100vw;
 }
   
 .user-component {
@@ -128,6 +134,7 @@
     font-weight: lighter;
     color: #1d2532;
     z-index: 10;
+    padding: 50px 0;
 }
   
 /* 모바일 스타일 */

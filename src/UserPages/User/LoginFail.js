@@ -7,7 +7,9 @@ function LoginFail(){
     const navigate = useNavigate();
     return(
         <div className="User-container">
-            <div className='circle'/>
+            <div className='header-container'>
+                <div className='circle'/>
+            </div>
             <img src={loginLogo} alt="login-logo" className="login-logo"/>
             <div className='user-component'>     
                 <div className="form-div">
