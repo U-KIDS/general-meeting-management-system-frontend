@@ -150,7 +150,16 @@ function Signup(){
           padding: '0 0 0 5px',
         }),
       };
+    
+    // 사진 첨부
+    const [selectedImage, setSelectedImage] = useState(null);
 
+    const handleImageChange = (event) => {
+        const imageFile = event.target.files[0];
+        setSelectedImage(imageFile);
+    };
+
+    // 가입 버튼 클릭 시 이벤트
     const handleSubmit = async (event) => {
         event.preventDefault();
     
@@ -206,6 +215,9 @@ function Signup(){
                         </div>
                         <div className="div-inputbox">
                             <Select options={grade} value={selectedGrade} onChange={handleGradeChange} styles={customStyles} placeholder="학년"/>
+                        </div>
+                        <div className="div-inputbox">
+                            <input type="file" onChange={handleImageChange} />
                         </div>
                         <button type="submit" className="submit-button">Sign-up</button>
                     </div>                    

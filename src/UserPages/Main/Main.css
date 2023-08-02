@@ -187,17 +187,4 @@
         flex-direction: column;
         position: relative; 
     }
-  
-    .agenda-result {
-    }
-  
-    
-  
-    .agenda-result.T {
-      background-color: #008000;
-    }
-  
-    .agenda-result.F {
-      background-color: #b30000;
-    }
-  }
+}

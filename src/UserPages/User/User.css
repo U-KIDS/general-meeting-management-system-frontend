@@ -164,7 +164,7 @@
     }
   
     .div-inputbox {
-        width: 130%; 
+        width: 110%; 
     }
   
     .user-input {
@@ -173,6 +173,6 @@
   
     .submit-button,
     .sub-button {
-        width: 130%; 
+        width: 110%; 
     }
 }
