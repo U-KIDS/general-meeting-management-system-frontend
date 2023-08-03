@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Main.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import barLogo from '../paran_logo.png';
 import AgendaList from './AgendaList';
 
@@ -30,13 +30,15 @@ function MainPage(){
             
             <div className="agenda-container">
                 {AgendaList.map((agenda) => (
-                <div key={agenda.id} className="agenda-card">
-                    <p className='agenda-state'>{agenda.activate ? '투표 진행 중' : '투표 대기'}</p>
-                    <h3 className='agenda-title'>{agenda.id}. {agenda.title}</h3>
-                    {agenda.result !== undefined && (
-                        <div className={`agenda-result ${agenda.result ? 'T' : 'F'}`}/>
-                    )}
-                </div>
+                    <Link key={agenda.id} to={`/agenda/${agenda.id}`} style={{ textDecoration: 'none' }}>
+                        <div key={agenda.id} className="agenda-card">
+                            <p className='agenda-state'>{agenda.activate ? '투표 진행 중' : '투표 대기'}</p>
+                            <h3 className='agenda-title'>{agenda.id}. {agenda.title}</h3>
+                            {agenda.result !== undefined && (
+                                <div className={`agenda-result ${agenda.result ? 'T' : 'F'}`}/>
+                            )}
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>
