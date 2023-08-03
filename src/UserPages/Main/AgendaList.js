@@ -41,11 +41,4 @@ export default [
         "activate" : false,
         "result" : true,
     },
-    {
-        "id" : 7,
-        "title" : "조조조조조",
-        "description" : "나는 조혜진",
-        "activate" : false,
-        "result" : true,
-    },
 ]

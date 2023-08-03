@@ -1,7 +1,7 @@
 import React from 'react';
 import "./User.css";
 import { useNavigate } from "react-router-dom";
-import loginLogo from '../paran_logo.png';
+import loginLogo from '../../paran_logo.png';
 
 function LoginFail(){
     const navigate = useNavigate();

@@ -2,6 +2,10 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-use-select: none;
+    user-select: none;
 }
 
 .top-bar{
@@ -66,7 +70,7 @@
 }
 
 .meeting-info {
-    width: 170px;
+    width: 115px;
     font-size: 28px;
     color: #FFFFFF;
     text-align: center;
@@ -163,7 +167,7 @@
 
 .agenda-description-container{
     height: 300px;
-    min-height: 200px;
+    min-height: 250px;
     display: flex;
     align-items: center;
 }

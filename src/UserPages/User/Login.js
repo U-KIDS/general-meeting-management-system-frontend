@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "./User.css";
-import loginLogo from '../paran_logo.png';
+import loginLogo from '../../paran_logo.png';
 import Input from "./input";
 import useInput from "./useInput";
 import { useNavigate } from "react-router-dom";

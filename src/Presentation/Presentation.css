@@ -1,0 +1,99 @@
+.Presentation-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-use-select: none;
+    user-select: none;
+}
+
+.paran-logo{
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    top: 30px;
+    z-index: 2;
+}
+
+.header-container{
+    min-height: 100px;
+    width: 100vw;
+    background-color: #1d2532;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.meeting-name{
+    color: #FFF;
+    font-size: 25px;
+    margin-left: 30px;
+}
+
+.agenda-title{
+    color: #FFF;
+    font-size: 25px;
+    margin-right: 30px;
+}
+
+.QRcode-container{
+    width: 450px;
+    height: 450px;
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin: 80px 0 30px 0;
+}
+
+.QRcode-message{
+    font-size: 25px;
+    text-align: center;
+    color: #1d2532;
+}
+
+.overview-container{
+    width: auto;
+    min-height: 110px;
+    padding-top: 80px;
+}
+
+.overview-message{
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    color: #1d2532;
+}
+
+.agenda-list-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 80px;
+}
+
+.agendaAdmin-card{
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background-color: #FFF;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.agendaAdmin-title{
+    font-size: 25px;
+    text-align: center;
+    font-weight: lighter;
+    color: #1d2532;
+    margin: 15px 0 0 0;
+}
+
+.agendaAdmin-id{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: #1d2532;
+    margin: 40px 0 0 0;
+}

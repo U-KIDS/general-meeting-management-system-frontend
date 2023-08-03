@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./Main.css";
 import { useNavigate, useParams } from "react-router-dom";
-import barLogo from '../paran_logo.png';
+import barLogo from '../../paran_logo.png';
 import AgendaList from './AgendaList';
 
 function Agenda({ match }){

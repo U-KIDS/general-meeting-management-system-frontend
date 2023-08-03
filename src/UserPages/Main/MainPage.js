@@ -1,8 +1,9 @@
 import React from 'react';
 import "./Main.css";
 import { useLocation, Link } from "react-router-dom";
-import barLogo from '../paran_logo.png';
+import barLogo from '../../paran_logo.png';
 import AgendaList from './AgendaList';
+import Meeting from './Meeting';
 
 function MainPage(){
     const location = useLocation();
@@ -20,12 +21,14 @@ function MainPage(){
                 </div>
             </div>
             <div className='meeting-info-div'>
-                <div className='meeting-info-circle1'>
-                    <div className='meeting-info-circle2'>
-                        <span className='meeting-info'>제98회<br></br>대의원<br></br>정기총회</span>
-                        <span className='meeting-date'>2023.09.11</span>
+                {Meeting.map((meeting) => (
+                    <div key={meeting.id} className='meeting-info-circle1'>
+                        <div className='meeting-info-circle2'>
+                            <span className='meeting-info'>{meeting.name}</span>
+                            <span className='meeting-date'>{meeting.meetingDate}</span>
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
             
             <div className="agenda-container">
