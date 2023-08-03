@@ -25,7 +25,7 @@ function Overview(){
             </div>
             <div className='agenda-list-container'>
                 {AgendaList.map((agenda) => (
-                    <Link key={agenda.id} to={`/agendaadmin/${agenda.id}?agendaTitle=${encodeURIComponent(agenda.title)}`} style={{ textDecoration: 'none' }}>
+                    <Link key={agenda.id} to={`/overview/${agenda.id}?agendaTitle=${encodeURIComponent(agenda.title)}`} style={{ textDecoration: 'none' }}>
                         <div key={agenda.id} className="agendaAdmin-card">
                             <h3 className='agendaAdmin-id'>{agenda.id}</h3>
                             <h3 className='agendaAdmin-title'>{agenda.title}</h3>

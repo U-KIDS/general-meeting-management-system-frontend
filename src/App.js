@@ -34,7 +34,7 @@ function App() {
       <Routes>
         <Route path='/qrcode' element={<QRcode />} />
         <Route path='/overview' element={<Overview />} />
-        <Route path="/agendaadmin/:id" element={<VotingStatus />} />
+        <Route path="/overview/:id" element={<VotingStatus />} />
       </Routes>
     </Router>
   );
