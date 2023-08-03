@@ -143,6 +143,7 @@
 .title-container{
     width: 100vw;
     height: 70px;
+    min-height: 50px;
     border-bottom: 2px solid #1d2532;
     display: flex;
     align-items: center;
@@ -161,7 +162,8 @@
 }
 
 .agenda-description-container{
-    min-height: 300px;
+    height: 300px;
+    min-height: 200px;
     display: flex;
     align-items: center;
 }

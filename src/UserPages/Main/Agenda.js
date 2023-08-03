@@ -41,8 +41,6 @@ function Agenda({ match }){
                 <button className={`vote-button oppose ${vote === 'oppose' ? 'selected' : ''}`} onClick={() => handleVote('oppose')}>반대</button>
                 <button className="vote-button final-vote" onClick={() => console.log('Final vote:', vote)}>투표하기</button>
             </div>
-            {vote && <p>Your vote: {vote}</p>}
-            
         </div>
     )
 }
