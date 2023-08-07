@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import "./User.css";
+import "./Signup.css";
 import loginLogo from '../../paran_logo.png';
 import Input from "./input";
 import useInput from "./useInput";
@@ -137,7 +137,7 @@ function Signup(){
     const customStyles = {
         control: (provided) => ({
           ...provided,
-          width: '100%',
+          width: '300px',
           height: '50px',
           borderRadius: '50px',
           backgroundColor: '#FFFFFF',
@@ -145,7 +145,7 @@ function Signup(){
           boxSizing: 'border-box',
           fontWeight: 'lighter',
           fontSize: '14px',
-          margin: '0 0 10px 0',
+          margin: '5px 0 10px 0',
           border: 'solid 1px #1d2532',
           padding: '0 0 0 5px',
         }),
@@ -191,12 +191,14 @@ function Signup(){
 
     return(
         <div className="User-container">
-            <div className='header-container'>
+            <div className='User-header-container'>
                 <div className='circle'/>
             </div>
-            <img src={loginLogo} alt="signup-logo" className="signup-logo"/>
+            <div className='logo-div'>
+                <img src={loginLogo} alt="signup-logo" className="signup-logo"/>
+            </div>
             <div className='user-component'>
-                <form className="form-container" onSubmit={handleSubmit} action="/signup" method="post">
+                <form className="signup-form-container" onSubmit={handleSubmit} action="/signup" method="post">
                     <div className="form-div">
                         <div className="div-inputbox">
                             <Input type="text" value={studentNumber} onChange={setStudentNumber} placeholder="학번"/>
@@ -217,13 +219,16 @@ function Signup(){
                             <Select options={grade} value={selectedGrade} onChange={handleGradeChange} styles={customStyles} placeholder="학년"/>
                         </div>
                         <div className="div-inputbox">
-                            <input type="file" onChange={handleImageChange} />
+                            <button className="upload-button">대의원증 업로드</button>
+                            <input type="file" onChange={handleImageChange}/>
                         </div>
                         <button type="submit" className="submit-button">Sign-up</button>
                     </div>                    
                 </form>      
             </div>
-            <h2 className='likelion'>Desiged by 🦁LIKELION 11th & Paran</h2>
+            <div className='User-footer'>
+                <h2 className='likelion'>Desiged by 🦁LIKELION 11th & Paran</h2>
+            </div>
         </div>
     )
 }

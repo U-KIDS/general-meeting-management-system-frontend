@@ -1,6 +1,5 @@
 .User-container {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     height: 100vh;
@@ -24,45 +23,37 @@
 }
   
 .login-logo {
-    width: 170px;
-    height: 170px;
-    position: absolute;
-    left: calc(50% - 85px);
+    width: 150px;
+    height: 150px;
     z-index: 2;
-    top: calc(50vh - 350px);
 }
 
-.signup-logo {
-    width: 170px;
-    height: 170px;
-    position: absolute;
-    left: calc(50% - 85px);
-    z-index: 2;
-    top: calc(50vh - 400px);
+.logo-div{
+    min-height: 40px;
+    height: 40px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.header-container{
-    min-height: 300px;
+.User-header-container{
+    height: 90px;
     width: 100vw;
 }
   
-.user-component {
+.login-user-component {
     width: 340px;
-    height: 540px;
+    height: 300px;
     border-radius: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: 50%;
-    transform: translate(-50%, -50%);
     background-color: #ffffff;
     z-index: 1;
     flex-direction: column;
-    padding: 50px 0 0 0;
+    padding: 40px 0 5px 0;
 }
   
 .form-container {
@@ -81,6 +72,8 @@
     width: 300px;
     height: 50px;
     margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
 }
   
 .user-input {
@@ -106,7 +99,7 @@
     box-sizing: border-box;
     font-weight: bolder;
     font-size: 20px;
-    margin: 30px 0 10px 0;
+    margin: 10px 0 10px 0;
 }
   
 .sub-button {
@@ -120,17 +113,28 @@
     font-size: 20px;
     border: solid 1px #1d2532;
 }
+
+.upload-button{
+    width: 90px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #ffffff;
+    color: #1d2532;
+    margin-right: 10px;
+}
+
+.User-footer{
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
   
 .likelion {
     font-size: 12px;
     font-weight: lighter;
     color: #1d2532;
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    width: fit-content;
 }
   
 .loginFail {
@@ -143,40 +147,30 @@
   
 /* 모바일 스타일 */
 @media (max-width: 600px) {
+    .User-container{
+    }
+
+    .User-header-container{
+        min-height: 50px;
+    }
+
     .login-logo {
         width: 120px;
         height: 120px;
         left: calc(50% - 60px);
-        top: calc(50vh - 250px);
-    }
-
-    .signup-logo {
-        width: 120px;
-        height: 120px;
-        left: calc(50% - 60px);
-        top: calc(50vh - 350px);
+        top: calc(50vh - 300px);
     }
   
     .user-component {
-        width: 80%;
-        height: auto;
-        border-radius: 25px;
+        padding: 45px 0 0 0 ;
     }
   
-    .form-div {
-        margin: 50px 0; 
-    }
-  
-    .div-inputbox {
-        width: 110%; 
-    }
-  
-    .user-input {
-        width: 100%; 
+    .User-footer{
+        height: 40px;
     }
   
     .submit-button,
     .sub-button {
-        width: 110%; 
+        width: 100%; 
     }
 }

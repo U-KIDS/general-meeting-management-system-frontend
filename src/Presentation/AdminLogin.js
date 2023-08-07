@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import "./Login.css";
-import loginLogo from '../../paran_logo.png';
-import Input from "./input";
-import useInput from "./useInput";
+import "./AdminLogin.css";
+import loginLogo from '../paran_logo.png';
+import Input from "../UserPages/User/input";
+import useInput from "../UserPages/User/useInput";
 import { useNavigate } from "react-router-dom";
 
-function Login(){
+function AdminLogin(){
     const [studentNumber, setStudentNumber, resetStudentNumber] = useInput("");
     const [password, setPassword, resetPassword] = useInput("");
     const [loginError, setLoginError] = useState(false);
@@ -41,24 +41,22 @@ function Login(){
 
     return(
         <div className="User-container">
-            <div className='User-header-container'>
-                <div className='circle'/>
-            </div>
+            <div className='User-header-container'/>
             <div className='logo-div'>
                 <img src={loginLogo} alt="login-logo" className="login-logo"/>
             </div>
             <div className='login-user-component'>
                 <form className="form-container" onSubmit={handleSubmit} action="/login" method="post">
                     <div className="form-div">
+                        <span className='admin'>ADMIN</span>
                         <div className="div-inputbox">
                             <Input type="text" value={studentNumber} onChange={setStudentNumber} placeholder="학번"/>
                         </div>
                         <div className="div-inputbox">
                             <Input type="password" value={password} onChange={setPassword} placeholder="비밀번호"/>
                         </div>
-                        <button type="submit" className="submit-button">Log-in</button>
-                        <button className="sub-button" onClick={() => navigate("/signup")}>Sign-up</button>
-                        {loginError && navigate("/loginfail")}
+                        <button type="submit" className="admin-submit-button">Log-in</button>
+                        {loginError && navigate("/adminloginfail")}
                     </div>                    
                 </form>      
             </div>
@@ -67,4 +65,4 @@ function Login(){
     )
 }
 
-export default Login;
+export default AdminLogin;

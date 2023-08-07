@@ -1,5 +1,5 @@
 import React from "react";
-import './User.css';
+import './Login.css';
 
 const Input = ({ type, value, onChange, placeholder }) => {
   return (

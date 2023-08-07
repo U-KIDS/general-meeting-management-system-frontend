@@ -10,6 +10,9 @@ import QRcode from './Presentation/QRcode';
 import Overview from './Presentation/Overview';
 import VotingStatus from './Presentation/VotingStatus';
 import Main from './UserPages/Main/Main';
+import AdminLogin from './Presentation/AdminLogin';
+import AdminLoginFail from './Presentation/AdminLoginFail';
+
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -34,6 +37,8 @@ function App() {
       </Routes>
       
       <Routes>
+        <Route path='/adminlogin' element={<AdminLogin />} />
+        <Route path='/adminloginfail' element={<AdminLoginFail />} />
         <Route path='/qrcode' element={<QRcode />} />
         <Route path='/overview' element={<Overview />} />
         <Route path="/overview/:id" element={<VotingStatus />} />
