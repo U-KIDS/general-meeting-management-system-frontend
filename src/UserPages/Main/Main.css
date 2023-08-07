@@ -45,8 +45,9 @@
 
 .meeting-info-div{
     min-height: 260px;
+    height: 260px;
+    width: 100vw;
     display: flex;
-    flex-direction: row;
 }
 
 .meeting-info-circle1 {
@@ -159,6 +160,12 @@
     font-size: 22px;
     font-weight: bold;
     color: #1d2532;
+}
+
+.back-icon-div{
+    width: 100vw;
+    height: 30px;
+    padding: 15px;
 }
 
 .back-icon{

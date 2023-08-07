@@ -29,7 +29,7 @@ function Agenda({ match }){
                 </div>
             </div>
             <div className='title-container'>
-                <img src='https://cdn-icons-png.flaticon.com/128/81/81037.png' alt="back-icon" className='back-icon' onClick={() => navigate("/")}/>
+                <img src='https://cdn-icons-png.flaticon.com/128/81/81037.png' alt="back-icon" className='back-icon' onClick={() => navigate(-1)}/>
                 <span className='title-span'>{agenda.id}. {agenda.title}</span>
             </div>
             <div className='agenda-description-container'>

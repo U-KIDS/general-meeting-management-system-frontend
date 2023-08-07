@@ -1,12 +1,11 @@
 import React from 'react';
 import "./Main.css";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import barLogo from '../../paran_logo.png';
-import AgendaList from './AgendaList';
 import Meeting from './MeetingList';
 
 function Main(){
-    const location = useLocation();
+    const navigate = useNavigate();
 
     return(
         <div className="Main-container">
@@ -44,7 +43,7 @@ function Main(){
                     <span className='identitycard-info'>참여 가능한 회의</span>
                 </div>
                 {Meeting.map((meeting) => (
-                    <div key={meeting.id} className='meeting-list'>
+                    <div key={meeting.id} className='meeting-list' onClick={() => navigate(`/Meeting/${meeting.id}`)}>
                         <span className='meeting-list-info'>{meeting.name}</span>
                         <span className='meeting-list-date'>{meeting.meetingDate}</span>
                     </div>

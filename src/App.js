@@ -26,7 +26,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Main />} />
-        <Route path='/meeting' element={<Meeting />} />
+        <Route path='/meeting/:id' element={<Meeting />} />
         <Route path="/agenda/:id" element={<Agenda />} />
         <Route path='/login' element={<Login />} />
         <Route path='/loginfail' element={<LoginFail />} />

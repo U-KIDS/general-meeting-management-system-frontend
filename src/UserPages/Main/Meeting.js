@@ -1,12 +1,13 @@
 import React from 'react';
 import "./Main.css";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import barLogo from '../../paran_logo.png';
 import AgendaList from './AgendaList';
 import MeetingList from './MeetingList';
 
 function Meeting(){
     const location = useLocation();
+    const navigate = useNavigate();
     const { name } = "혜진조"; // 로그인한 회원의 이름과 학과
     const { major } = "컴퓨터소프트웨어공학과"; // 추후 수정....要
 
@@ -21,6 +22,9 @@ function Meeting(){
                 </div>
             </div>
             <div className='meeting-info-div'>
+                <div className='back-icon-div'>
+                    <img src='https://cdn-icons-png.flaticon.com/128/81/81037.png' alt="back-icon" className='back-icon' onClick={() => navigate(-1)}/>
+                </div>
                 {MeetingList.map((meeting) => (
                     <div key={meeting.id} className='meeting-info-circle1'>
                         <div className='meeting-info-circle2'>
