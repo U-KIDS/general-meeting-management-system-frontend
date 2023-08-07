@@ -33,7 +33,6 @@ function Agenda({ match }){
                 <span className='title-span'>{agenda.id}. {agenda.title}</span>
             </div>
             <div className='agenda-description-container'>
-                <span className='agenda-description'>{agenda.description}</span>
             </div>
             <div className='vote-container'>
                 <button className={`vote-button abstain ${vote === 'abstain' ? 'selected' : ''}`} onClick={() => handleVote('abstain')}>기권</button>

@@ -4,11 +4,12 @@ import './App.css';
 import Login from './UserPages/User/Login';
 import LoginFail from './UserPages/User/LoginFail';
 import Signup from './UserPages/User/Signup';
-import MainPage from './UserPages/Main/MainPage';
+import Meeting from './UserPages/Main/Meeting';
 import Agenda from './UserPages/Main/Agenda';
 import QRcode from './Presentation/QRcode';
 import Overview from './Presentation/Overview';
 import VotingStatus from './Presentation/VotingStatus';
+import Main from './UserPages/Main/Main';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -24,7 +25,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<MainPage />} />
+        <Route path='/' element={<Main />} />
+        <Route path='/meeting' element={<Meeting />} />
         <Route path="/agenda/:id" element={<Agenda />} />
         <Route path='/login' element={<Login />} />
         <Route path='/loginfail' element={<LoginFail />} />

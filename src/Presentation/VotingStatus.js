@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./Presentation.css";
 import Logo from '../paran_logo.png';
 import { useNavigate, Link, useLocation } from "react-router-dom";
-import Meeting from '../UserPages/Main/Meeting';
+import Meeting from '../UserPages/Main/MeetingList';
 import AgendaList from '../UserPages/Main/AgendaList';
 
 function VotingStatus(){

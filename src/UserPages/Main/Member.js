@@ -1,0 +1,32 @@
+export default [
+    {
+        "id" : 1,
+        "studentNumber" : "20204012",
+        "password" : "1234",
+        "name" : "조혜진",
+        "college" : "SW융합대학",
+        "major" : "컴퓨터소프트웨어공학과",
+        "activate" : true,
+        "authorities" : "대의원증url",
+    },
+    {
+        "id" : 2,
+        "studentNumber" : "20204012",
+        "password" : "1234",
+        "name" : "조혜진",
+        "college" : "SW융합대학",
+        "major" : "컴퓨터소프트웨어공학과",
+        "activate" : true,
+        "authorities" : "대의원증url",
+    },
+    {
+        "id" : 3,
+        "studentNumber" : "20204012",
+        "password" : "1234",
+        "name" : "조혜진",
+        "college" : "SW융합대학",
+        "major" : "컴퓨터소프트웨어공학과",
+        "activate" : true,
+        "authorities" : "대의원증url",
+    },
+]
