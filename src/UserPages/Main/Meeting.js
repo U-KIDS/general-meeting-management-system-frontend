@@ -39,10 +39,14 @@ function Meeting(){
                 {AgendaList.map((agenda) => (
                     <Link key={agenda.id} to={`/agenda/${agenda.id}`} style={{ textDecoration: 'none' }}>
                         <div key={agenda.id} className="agenda-card">
-                            <p className='agenda-state'>{agenda.activate ? '투표 진행 중' : '투표 대기'}</p>
+                            <p className='agenda-state'>
+                                {agenda.activate === 'IN_PROGRESS' ? '투표 진행 중' : 
+                                agenda.activate === 'COMPLETE' ? '투표 완료' :
+                                agenda.activate === 'NOT_STARTED' ? '투표 대기' : ''}
+                            </p>
                             <h3 className='agenda-info'>{agenda.id}. {agenda.title}</h3>
-                            {agenda.result !== undefined && (
-                                <div className={`agenda-result ${agenda.result ? 'T' : 'F'}`}/>
+                            {agenda.activate === 'COMPLETE' && agenda.result !== undefined && (
+                                <div className={`agenda-result ${agenda.result ? 'T' : 'F'}`} />
                             )}
                         </div>
                     </Link>
