@@ -13,18 +13,7 @@ import Main from './UserPages/Main/Main';
 import AdminLogin from './Presentation/AdminLogin';
 import AdminLoginFail from './Presentation/AdminLoginFail';
 
-
 function App() {
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  function setScreenSize() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  }
-  useEffect(() => {
-    setScreenSize();
-  });
-
   return (
     <Router>
       <Routes>

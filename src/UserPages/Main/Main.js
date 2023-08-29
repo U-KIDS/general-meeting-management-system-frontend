@@ -1,11 +1,27 @@
-import React from 'react';
+import { useState, useEffect } from "react"
 import "./Main.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import barLogo from '../../paran_logo.png';
-import Meeting from './MeetingList';
+import axios from "axios";
+import { BASE_URL, CONFIG } from "../../BaseUrl";
 
 function Main(){
     const navigate = useNavigate();
+    
+    const [meetings, setMeetings] = useState([]);
+
+    useEffect(() => {
+        axios.get(BASE_URL + "/api/client/detail", CONFIG)
+            .then((response) => {
+                console.log(response);
+                if (response.data.data && response.data.data.meetingList) {
+                    setMeetings(response.data.data.meetingList);
+                }
+            })
+            .catch((error => {
+                console.log(error);
+            }))
+    }, []);
 
     return(
         <div className="Main-container">
@@ -42,15 +58,13 @@ function Main(){
                 <div className='meeting-list-line'>
                     <span className='identitycard-info'>참여 가능한 회의</span>
                 </div>
-                {Meeting.map((meeting) => (
-                    <div key={meeting.id} className='meeting-list' onClick={() => navigate(`/Meeting/${meeting.id}`)}>
-                        <span className='meeting-list-info'>{meeting.name}</span>
+                {meetings.map((meeting) => (
+                    <div key={meeting.meetingId} className='meeting-list' onClick={() => navigate(`/meeting/${meeting.meetingId}`)}>
+                        <span className='meeting-list-info'>{meeting.meetingName}</span>
                         <span className='meeting-list-date'>{meeting.meetingDate}</span>
                     </div>
                 ))}
             </div>
-            
-           
         </div>
     )
 }

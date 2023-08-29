@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Main.css";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { useLocation, Link, useNavigate, useParams } from "react-router-dom";
 import barLogo from '../../paran_logo.png';
+import axios from 'axios';
 import AgendaList from './AgendaList';
-import MeetingList from './MeetingList';
+import { BASE_URL, CONFIG } from '../../BaseUrl'; 
 
-function Meeting(){
+function Meeting() {
     const location = useLocation();
     const navigate = useNavigate();
+    const { meetingId } = useParams();
+    const [meeting, setMeeting] = useState(null);
+    const [agendaList, setAgendaList] = useState([]);
+
+    useEffect(() => {
+        axios.get(BASE_URL + `/api/client/${meetingId}`, CONFIG)
+            .then((response) => {
+                console.log(response);
+                setMeeting(response.data.data);
+                setAgendaList(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [meetingId]);
+
     const { name } = "혜진조"; // 로그인한 회원의 이름과 학과
     const { major } = "컴퓨터소프트웨어공학과"; // 추후 수정....要
+
 
     return(
         <div className="Main-container">
@@ -25,27 +43,27 @@ function Meeting(){
                 <div className='back-icon-div'>
                     <img src='https://cdn-icons-png.flaticon.com/128/81/81037.png' alt="back-icon" className='back-icon' onClick={() => navigate(-1)}/>
                 </div>
-                {MeetingList.map((meeting) => (
-                    <div key={meeting.id} className='meeting-info-circle1'>
+                {meeting && ( 
+                    <div className='meeting-info-circle1'>
                         <div className='meeting-info-circle2'>
-                            <span className='meeting-info'>{meeting.name}</span>
+                            <span className='meeting-info'>{meeting.meetingName}</span>
                             <span className='meeting-date'>{meeting.meetingDate}</span>
                         </div>
                     </div>
-                ))}
+                )}
             </div>
             
             <div className="agenda-container">
-                {AgendaList.map((agenda) => (
-                    <Link key={agenda.id} to={`/agenda/${agenda.id}`} style={{ textDecoration: 'none' }}>
-                        <div key={agenda.id} className="agenda-card">
+                {agendaList && agendaList.map((agenda) => (
+                    <Link key={agenda.agendaId} to={`/agenda/${agenda.agendaId}`} style={{ textDecoration: 'none' }}>
+                        <div key={agenda.agendaId} className="agenda-card">
                             <p className='agenda-state'>
-                                {agenda.activate === 'IN_PROGRESS' ? '투표 진행 중' : 
-                                agenda.activate === 'COMPLETE' ? '투표 완료' :
-                                agenda.activate === 'NOT_STARTED' ? '투표 대기' : ''}
+                                {agenda.status === 'IN_PROGRESS' ? '투표 진행 중' : 
+                                agenda.status === 'COMPLETE' ? '투표 완료' :
+                                agenda.status === 'NOT_STARTED' ? '투표 대기' : ''}
                             </p>
-                            <h3 className='agenda-info'>{agenda.id}. {agenda.title}</h3>
-                            {agenda.activate === 'COMPLETE' && agenda.result !== undefined && (
+                            <h3 className='agenda-info'>{agenda.agendaId}. {agenda.title}</h3>
+                            {agenda.status === 'COMPLETE' && agenda.result !== undefined && (
                                 <div className={`agenda-result ${agenda.result ? 'T' : 'F'}`} />
                             )}
                         </div>
