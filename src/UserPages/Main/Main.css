@@ -199,32 +199,32 @@
     border-style:double;
 }
 
-.vote-button.abstain{
+.vote-button.abstention{
     border-color: #E6C560;
     color: #E6C560;
 }
 
-.vote-button.approve{
+.vote-button.agree{
     border-color: #618E62;
     color: #618E62;
 }
 
-.vote-button.oppose{
+.vote-button.disagree{
     border-color: #A83E33;
     color: #A83E33;
 }
 
-.vote-button.abstain.selected{
+.vote-button.abstention.selected{
     background-color: #E6C560;
     color: #FFF;
 }
 
-.vote-button.approve.selected{
+.vote-button.agree.selected{
     background-color: #618E62;
     color: #FFF;
 }
 
-.vote-button.oppose.selected{
+.vote-button.disagree.selected{
     background-color: #A83E33;
     color: #FFF;
 }
