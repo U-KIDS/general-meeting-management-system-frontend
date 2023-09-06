@@ -1,4 +1,4 @@
-const BASE_URL = "http://13.124.13.196:8080"
+const BASE_URL = "https://ukids-server.site"
 const CONFIG = {
     headers: {
       "Access-Control-Allow-Origin": BASE_URL,

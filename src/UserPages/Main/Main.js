@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import barLogo from '../../paran_logo.png';
 import axios from "axios";
 import { BASE_URL, CONFIG } from "../../BaseUrl";
-import { TOKEN_CONFIG } from "../../api/api";
 
 function Main(){
     const navigate = useNavigate();
