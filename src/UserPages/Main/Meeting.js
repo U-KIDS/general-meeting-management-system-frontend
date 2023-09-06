@@ -10,15 +10,27 @@ function Meeting() {
     const location = useLocation();
     const navigate = useNavigate();
     const { meetingId } = useParams();
-    const [meeting, setMeeting] = useState(null);
+    const [meeting, setMeeting] = useState({
+        meetingTitle: "",
+        meetingDate: ""
+    });
     const [agendaList, setAgendaList] = useState([]);
 
     useEffect(() => {
-        axios.get(BASE_URL + `/api/client/${meetingId}`, CONFIG)
+        axios.get("http://localhost:8080" + `/api/client/agenda/` + meetingId, {
+            headers : {
+                Authorization : `Bearer ${sessionStorage.getItem("token")}`
+            }
+        })
             .then((response) => {
                 console.log(response);
-                setMeeting(response.data.data);
-                setAgendaList(response.data.data);
+                setMeeting(response.data.data.meetingTitle);
+                let meetingDate = response.data.data.meetingDate.split('T')[0].replace(/-/g,".");
+                setMeeting({
+                    meetingTitle: response.data.data.meetingTitle,
+                    meetingDate: meetingDate,
+                })
+                setAgendaList(response.data.data.agendas);
             })
             .catch((error) => {
                 console.log(error);
@@ -28,6 +40,17 @@ function Meeting() {
     const { name } = "혜진조"; // 로그인한 회원의 이름과 학과
     const { major } = "컴퓨터소프트웨어공학과"; // 추후 수정....要
 
+    const agendaButtonHandler = (e) => {
+        e.preventDefault()
+        let [status, id] = e.target.id.split("^")
+        if(status === "IN_PROGRESS") {
+            navigate(`/agenda/` + id)
+        } else if (status === "COMPLETE") {
+            alert("이미 종료된 투표입니다.")
+        } else if (status === "NOT_STARTED") {
+            alert("아직 시작 전인 투표입니다.")
+        }
+    }
 
     return(
         <div className="Main-container">
@@ -35,18 +58,18 @@ function Meeting() {
                 <img src={barLogo} alt="bar-logo" className="bar-logo"/>
                 <span className='paran-span'>제39대 총대의원회 파란</span>
                 <div className='user-info'>
-                    <span className='user-info-span'>컴퓨터소프트웨어공학과</span>
-                    <span className='user-info-span'>조혜진</span>
+                    <span className='user-info-span'>{sessionStorage.getItem("major")}</span>
+                    <span className='user-info-span'>{sessionStorage.getItem("name")}</span>
                 </div>
             </div>
             <div className='meeting-info-div'>
                 <div className='back-icon-div'>
-                    <img src='https://cdn-icons-png.flaticon.com/128/81/81037.png' alt="back-icon" className='back-icon' onClick={() => navigate(-1)}/>
+                    <img src='https://cdn-icons-png.flaticon.com/128/81/81037.png' alt="back-icon" className='back-icon' onClick={() => navigate("/")}/>
                 </div>
                 {meeting && ( 
                     <div className='meeting-info-circle1'>
                         <div className='meeting-info-circle2'>
-                            <span className='meeting-info'>{meeting.meetingName}</span>
+                            <span className='meeting-info'>{meeting.meetingTitle}</span>
                             <span className='meeting-date'>{meeting.meetingDate}</span>
                         </div>
                     </div>
@@ -55,19 +78,19 @@ function Meeting() {
             
             <div className="agenda-container">
                 {agendaList && agendaList.map((agenda) => (
-                    <Link key={agenda.agendaId} to={`/agenda/${agenda.agendaId}`} style={{ textDecoration: 'none' }}>
-                        <div key={agenda.agendaId} className="agenda-card">
-                            <p className='agenda-state'>
+                    <button className='agenda-button' id={agenda.status + "^" + agenda.agendaId} onClick={agendaButtonHandler} style={{ textDecoration: 'none' }}>
+                        <div id={agenda.status + "^" + agenda.agendaId} className="agenda-card">
+                            <p id={agenda.status + "^" + agenda.agendaId} className='agenda-state'>
                                 {agenda.status === 'IN_PROGRESS' ? '투표 진행 중' : 
                                 agenda.status === 'COMPLETE' ? '투표 완료' :
                                 agenda.status === 'NOT_STARTED' ? '투표 대기' : ''}
                             </p>
-                            <h3 className='agenda-info'>{agenda.agendaId}. {agenda.title}</h3>
+                            <h3 id={agenda.status + "^" + agenda.agendaId} className='agenda-info'>{agenda.title}</h3>
                             {agenda.status === 'COMPLETE' && agenda.result !== undefined && (
-                                <div className={`agenda-result ${agenda.result ? 'T' : 'F'}`} />
+                                <div id={agenda} className={`agenda-result ${agenda.result ? 'T' : 'F'}`} />
                             )}
                         </div>
-                    </Link>
+                    </button>
                 ))}
             </div>
         </div>

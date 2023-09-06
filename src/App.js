@@ -18,8 +18,8 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Main />} />
-        <Route path='/meeting/:id' element={<Meeting />} />
-        <Route path="/agenda/:id" element={<Agenda />} />
+        <Route path='/meeting/:meetingId' element={<Meeting />} />
+        <Route path="/agenda/:agendaId" element={<Agenda />} />
         <Route path='/login' element={<Login />} />
         <Route path='/loginfail' element={<LoginFail />} />
         <Route path='/signup' element={<Signup />} />

@@ -86,8 +86,8 @@
 }
 
 .meeting-date {
-    font-size: 20px;
-    font-weight: lighter;
+    font-size: 12px;
+    font-weight: light;
     color: #FFFFFF;
     text-align: center;
     display: flex;
@@ -110,7 +110,7 @@
     height: 80px;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
 }
@@ -126,7 +126,7 @@
     font-size: 18px;
     color: #1d2532;
     text-align: left;
-    margin: 5px 0 10px 20px ;
+    margin: 5px 0 10px 25px ;
 }
 
 .agenda-result{
@@ -145,6 +145,12 @@
   
 .agenda-result.F {
     background-color: #B30000;
+}
+
+.agenda-button {
+    outline: none;
+    background-color: white;
+    border: none;
 }
 
 .title-container{
@@ -364,8 +370,8 @@
     }
   
     .meeting-date {
-      font-size: 16px;
-      top: 85%;
+      font-size: 12px;
+      top: 82%;
     }
   
     .agenda-container {

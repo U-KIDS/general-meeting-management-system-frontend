@@ -55,7 +55,7 @@
     flex-direction: column;
     padding: 60px 0 5px 0;
 }
-  
+
 .form-container {
     display: flex;
     justify-content: center;
@@ -81,6 +81,7 @@
     margin: 0 0 10px 0;
     display: flex;
     align-items: center;
+    color: #1c1b1a;
 }
   
 .user-input {
@@ -95,6 +96,7 @@
     box-sizing: border-box;
     font-weight: lighter;
     font-size: 14px;
+    color: #1c1b1a;
 }
   
 .submit-button {

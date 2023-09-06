@@ -6,6 +6,7 @@ import Input from "./input";
 import useInput from "./useInput";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
+import { BASE_URL } from '../../BaseUrl';
 
 function Signup(){
     const [studentNumber, setStudentNumber, resetStudentNumber] = useInput("");
@@ -141,7 +142,7 @@ function Signup(){
           height: '50px',
           borderRadius: '50px',
           backgroundColor: '#FFFFFF',
-          color: '#1d2532',
+          color: '#1C1B1A',
           boxSizing: 'border-box',
           fontWeight: 'lighter',
           fontSize: '14px',
@@ -155,6 +156,8 @@ function Signup(){
     const [selectedImage, setSelectedImage] = useState(null);
 
     const handleImageChange = (event) => {
+        event.preventDefault()
+        event.persist()
         const imageFile = event.target.files[0];
         setSelectedImage(imageFile);
     };
@@ -162,29 +165,57 @@ function Signup(){
     // 가입 버튼 클릭 시 이벤트
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
-        try {
-          const response = await axios.post('API_ENDPOINT_URL/signup', {
-            studentNumber, password, name, major, college, grade,
-          });
-    
-          // 요청이 성공적으로 완료되었을 때의 처리
-          console.log(response.data); // 백엔드에서 보내준 응답 데이터
-    
-          // 입력 데이터 초기화
-          resetStudentNumber();
-          resetPassword();
-          resetName();
-          setSelectedCollege(null);
-          setSelectedMajor(null);
-          setSelectedGrade(null);
-          
-    
-          // 가입 성공 후 처리
-        } catch (error) {
-          // 요청이 실패했을 때의 처리
-          console.error('가입 실패:', error);
+
+        const formData = new FormData()
+        const body = {
+            studentNumber: studentNumber,
+            password: password,
+            name: name,
+            college: selectedCollege.value,
+            major: selectedMajor.value,
+            grade: selectedGrade.value
         }
+        const inputValuesJson = JSON.stringify(body)
+        const blob = new Blob([inputValuesJson], {type: "application/json"})
+        formData.append('signupDto', blob)
+        formData.append('image', selectedImage)
+        
+        axios.post(BASE_URL + "/auth/signup", formData, {
+            headers : {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then((response) => {
+            console.log(response)
+            if(response.data.status === 201) {
+                navigate("/login")
+            } else if (response.data.message === '이미 가입된 유저입니다.'){
+                alert("이미 가입된 학번입니다. 관리자에게 문의하세요.")
+                resetStudentNumber();
+                resetPassword();
+                resetName();
+                setSelectedCollege(null);
+                setSelectedMajor(null);
+                setSelectedGrade(null);
+            } else {
+                alert("회원가입할 수 없습니다. 관리자에게 문의하세요.")
+                resetStudentNumber();
+                resetPassword();
+                resetName();
+                setSelectedCollege(null);
+                setSelectedMajor(null);
+                setSelectedGrade(null);
+            }
+        })
+        .catch((error) => {
+            alert("회원가입할 수 없습니다. 관리자에게 문의하세요.")
+            resetStudentNumber();
+            resetPassword();
+            resetName();
+            setSelectedCollege(null);
+            setSelectedMajor(null);
+            setSelectedGrade(null);
+        })
       };
 
     const navigate = useNavigate();

@@ -37,7 +37,6 @@ function Login(){
 
         axios.post(BASE_URL + "/auth/login", body)
         .then((response) => {
-            console.log(response.data.data.token)
             window.sessionStorage.setItem("token", response.data.data.token)
             navigate("/")
         })
