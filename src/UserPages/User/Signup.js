@@ -250,7 +250,7 @@ function Signup(){
                             <Select options={grade} value={selectedGrade} onChange={handleGradeChange} styles={customStyles} placeholder="학년"/>
                         </div>
                         <div className="div-inputbox">
-                            <button className="upload-button">대의원증 업로드</button>
+                            <div className="user-upload-button">대의원증 사진</div>
                             <input type="file" onChange={handleImageChange}/>
                         </div>
                         <button type="submit" className="submit-button">Sign-up</button>

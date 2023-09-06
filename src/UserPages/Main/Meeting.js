@@ -17,7 +17,7 @@ function Meeting() {
     const [agendaList, setAgendaList] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080" + `/api/client/agenda/` + meetingId, {
+        axios.get(BASE_URL + `/api/client/meeting/` + meetingId, {
             headers : {
                 Authorization : `Bearer ${sessionStorage.getItem("token")}`
             }
@@ -43,12 +43,29 @@ function Meeting() {
     const agendaButtonHandler = (e) => {
         e.preventDefault()
         let [status, id] = e.target.id.split("^")
+        console.log(id)
         if(status === "IN_PROGRESS") {
-            navigate(`/agenda/` + id)
+            navigate(`/meeting/${meetingId}/agenda/` + id)
         } else if (status === "COMPLETE") {
             alert("이미 종료된 투표입니다.")
         } else if (status === "NOT_STARTED") {
             alert("아직 시작 전인 투표입니다.")
+        }
+    }
+
+    const getCardClass = (status) => {
+        if(status === "IN_PROGRESS") {
+            return "agenda-card"
+        } else {
+            return "agenda-card agenda-cannot-vote"
+        }
+    }
+
+    const getColor = (status) => {
+        if(status === "IN_PROGRESS") {
+            return "state-green"
+        } else {
+            return "state-gray"
         }
     }
 
@@ -79,10 +96,10 @@ function Meeting() {
             <div className="agenda-container">
                 {agendaList && agendaList.map((agenda) => (
                     <button className='agenda-button' id={agenda.status + "^" + agenda.agendaId} onClick={agendaButtonHandler} style={{ textDecoration: 'none' }}>
-                        <div id={agenda.status + "^" + agenda.agendaId} className="agenda-card">
-                            <p id={agenda.status + "^" + agenda.agendaId} className='agenda-state'>
+                        <div id={agenda.status + "^" + agenda.agendaId} className={getCardClass(agenda.status)}>
+                            <p id={agenda.status + "^" + agenda.agendaId} className={`agenda-state ${getColor(agenda.status)}`}>
                                 {agenda.status === 'IN_PROGRESS' ? '투표 진행 중' : 
-                                agenda.status === 'COMPLETE' ? '투표 완료' :
+                                agenda.status === 'COMPLETE' ? '투표 종료' :
                                 agenda.status === 'NOT_STARTED' ? '투표 대기' : ''}
                             </p>
                             <h3 id={agenda.status + "^" + agenda.agendaId} className='agenda-info'>{agenda.title}</h3>

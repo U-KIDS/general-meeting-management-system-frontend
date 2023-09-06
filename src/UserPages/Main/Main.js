@@ -16,7 +16,7 @@ function Main(){
     const [meetings, setMeetings] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080" + "/api/client/detail", {
+        axios.get(BASE_URL + "/api/client/detail", {
             headers : {
                 Authorization : `Bearer ${sessionStorage.getItem("token")}`
             }

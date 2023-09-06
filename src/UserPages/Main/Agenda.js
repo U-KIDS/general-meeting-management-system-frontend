@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Main.css";
 import { useNavigate, useParams } from "react-router-dom";
 import barLogo from '../../paran_logo.png';
@@ -7,29 +7,45 @@ import axios from 'axios';
 import { BASE_URL, CONFIG } from "../../BaseUrl";
 
 function Agenda({ match }){
-    const { id } = useParams();
-    const agendaId = parseInt(id);
-    const agenda = AgendaList.find((item) => item.id === agendaId);
+    const { meetingId, agendaId } = useParams();
     const navigate = useNavigate();
 
     const [vote, setVote] = useState(null); 
+    const [agenda, setAgenda] = useState({});
     const handleVote = (voteType) => {
-        setVote(voteType.toLowerCase());
+        setVote(voteType);
     };
+
+    useEffect(() => {
+        axios.get(BASE_URL + `/api/client/agenda/${agendaId}`, {
+            headers : {
+                Authorization : `Bearer ${sessionStorage.getItem("token")}`
+            }
+        })
+        .then((response) => {
+            console.log(response)
+            setAgenda(response.data.data)
+        })
+    },[])
 
     const handleFinalVote = () => {
         if (vote !== null) {
             const validVoteValues = ['AGREE', 'DISAGREE', 'ABSTENTION'];
             if (validVoteValues.includes(vote)) {
-                const requestBody = {
-                    agendaId: 1,
-                    studentNumber: "20202020", 
-                    voteValue: vote
-                };
-    
-                axios.post(BASE_URL + "/api/client/vote", requestBody, CONFIG)
+                console.log(vote)
+                axios.post(BASE_URL + `/api/client/agenda/${agendaId}/vote?voteValue=${vote}`, null, {
+                    headers : {
+                        Authorization : `Bearer ${sessionStorage.getItem("token")}`
+                    }
+                })
                     .then((response) => {
-                        console.log(response.data);
+                        console.log(response)
+                        if (response.data.status === 200) {
+                            navigate("/meeting/" + meetingId)
+                        } else if(response.data.status === 400) {
+                            alert("이미 투표 완료하셨습니다.")
+                            navigate("/meeting/" + meetingId)
+                        }
                     })
                     .catch((error) => {
                         console.log(error);
@@ -51,19 +67,32 @@ function Agenda({ match }){
                 <img src={barLogo} alt="bar-logo" className="bar-logo" />
                 <span className='paran-span'>제39대 총대의원회 파란</span>
                 <div className='user-info'>
-                    <span className='user-info-span'>컴퓨터소프트웨어공학과</span>
-                    <span className='user-info-span'>조혜진</span>
+                    <span className='user-info-span'>{sessionStorage.getItem("major")}</span>
+                    <span className='user-info-span'>{sessionStorage.getItem("name")}</span>
                 </div>
             </div>
             <div className='title-container'>
-                <img src='https://cdn-icons-png.flaticon.com/128/81/81037.png' alt="back-icon" className='back-icon' onClick={() => navigate(-1)} />
-                <span className='title-span'>{agenda.id}. {agenda.title}</span>
+                <img src='https://cdn-icons-png.flaticon.com/128/81/81037.png' alt="back-icon" className='back-icon' onClick={() => navigate("/meeting/" + meetingId)} />
+                <span className='title-span'>투표</span>
             </div>
-            <div className='agenda-description-container'/>
+            <div className='agenda-description-container'>
+                <div className='table-component'>
+                    <div className='table-title'>의안 번호</div>
+                    <div className='table-contents'>{agenda.agendaNumber}</div>
+                </div>
+                <div className='table-component'>
+                    <div className='table-title'>의안 명</div>
+                    <div className='table-contents'>{agenda.title}</div>
+                </div>
+                <div className='table-component'>
+                    <div className='table-title'>입안처</div>
+                    <div className='table-contents'>{agenda.agendaCreateBy}</div>
+                </div>
+            </div>
             <div className='vote-container'>
-                <button className={`vote-button abstention ${vote === 'abstention' ? 'selected' : ''}`} onClick={() => handleVote('ABSTENTION')}>기권</button>
-                <button className={`vote-button agree ${vote === 'agree' ? 'selected' : ''}`} onClick={() => handleVote('AGREE')}>찬성</button>
-                <button className={`vote-button disagree ${vote === 'disagree' ? 'selected' : ''}`} onClick={() => handleVote('DISAGREE')}>반대</button>
+                <button className={`vote-button abstention ${vote === 'ABSTENTION' ? 'selected' : ''}`} onClick={() => handleVote('ABSTENTION')}>기권</button>
+                <button className={`vote-button agree ${vote === 'AGREE' ? 'selected' : ''}`} onClick={() => handleVote('AGREE')}>찬성</button>
+                <button className={`vote-button disagree ${vote === 'DISAGREE' ? 'selected' : ''}`} onClick={() => handleVote('DISAGREE')}>반대</button>
                 <button className="vote-button final-vote" onClick={handleFinalVote}>투표하기</button>
             </div>
         </div>

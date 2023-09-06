@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/meeting/:meetingId' element={<Meeting />} />
-        <Route path="/agenda/:agendaId" element={<Agenda />} />
+        <Route path="/meeting/:meetingId/agenda/:agendaId" element={<Agenda />} />
         <Route path='/login' element={<Login />} />
         <Route path='/loginfail' element={<LoginFail />} />
         <Route path='/signup' element={<Signup />} />
