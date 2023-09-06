@@ -5,39 +5,69 @@ import loginLogo from '../../paran_logo.png';
 import Input from "./input";
 import useInput from "./useInput";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from '../../BaseUrl';
 
 function Login(){
-    const [studentNumber, setStudentNumber, resetStudentNumber] = useInput("");
-    const [password, setPassword, resetPassword] = useInput("");
-    const [loginError, setLoginError] = useState(false);
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    window.sessionStorage.clear()
     
-        try {
-            const response = await axios.post('API_ENDPOINT_URL/login', {
-                studentNumber,
-                password,
-            });
-    
-            // 요청이 성공적으로 완료되었을 때의 처리
-            console.log(response.data); // 백엔드에서 보내준 응답 데이터
-    
-            // 입력 데이터 초기화
-            resetStudentNumber();
-            resetPassword();
-    
-            // 로그인 성공 시 메인 페이지로 이동
-            navigate('/', { state: { name: '이름', major: '학과' } });
-        } catch (error) {
-            // 요청이 실패했을 때의 처리
-            console.error('로그인 실패:', error);
-            // 로그인 실패 상태로 변경
-            setLoginError(true);
-        }
-      };
+    let [values, setValues] = useState({
+        studentNumber: "",
+        password: "",
+    })
+
+    let [loginError, setLoginError] = useState(false);
+
+    const handleChange = function(e) {
+        setValues({
+            ...values,
+            [e.target.name]: e.target.value,
+        })
+    }
 
     const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const body = {
+            studentNumber : values.studentNumber,
+            password : values.password
+        }
+
+        axios.post(BASE_URL + "/auth/login", body)
+        .then((response) => {
+            console.log(response.data.data.token)
+            window.sessionStorage.setItem("token", response.data.data.token)
+            navigate("/")
+        })
+        .catch((error) => {
+            console.log(error)
+            setLoginError(true)
+        })
+    
+        // try {
+        //     const response = await axios.post('API_ENDPOINT_URL/login', {
+        //         studentNumber,
+        //         password,
+        //     });
+    
+        //     // 요청이 성공적으로 완료되었을 때의 처리
+        //     console.log(response.data); // 백엔드에서 보내준 응답 데이터
+    
+        //     // 입력 데이터 초기화
+        //     resetStudentNumber();
+        //     resetPassword();
+    
+        //     // 로그인 성공 시 메인 페이지로 이동
+        //     navigate('/', { state: { name: '이름', major: '학과' } });
+        // } catch (error) {
+        //     // 요청이 실패했을 때의 처리
+        //     console.error('로그인 실패:', error);
+        //     // 로그인 실패 상태로 변경
+        //     setLoginError(true);
+        // }
+      };
 
     return(
         <div className="User-container">
@@ -51,10 +81,10 @@ function Login(){
                 <form className="form-container" onSubmit={handleSubmit} action="/login" method="post">
                     <div className="form-div">
                         <div className="div-inputbox">
-                            <Input type="text" value={studentNumber} onChange={setStudentNumber} placeholder="학번"/>
+                            <Input type="text" name="studentNumber" value={values.studentNumber} onChange={handleChange} placeholder="학번" required/>
                         </div>
                         <div className="div-inputbox">
-                            <Input type="password" value={password} onChange={setPassword} placeholder="비밀번호"/>
+                            <Input type="password" name="password" value={values.password} onChange={handleChange} placeholder="비밀번호" required/>
                         </div>
                         <button type="submit" className="submit-button">Log-in</button>
                         <button className="sub-button" onClick={() => navigate("/signup")}>Sign-up</button>
