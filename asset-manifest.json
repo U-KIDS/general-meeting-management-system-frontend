@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/U-KIDS/general-meeting-management-system-frontend/static/css/main.8c86d8e2.css",
-    "main.js": "/U-KIDS/general-meeting-management-system-frontend/static/js/main.0138ff5f.js",
-    "static/media/paran_logo.png": "/U-KIDS/general-meeting-management-system-frontend/static/media/paran_logo.7c162b6e5d952e1ab86f.png",
-    "index.html": "/U-KIDS/general-meeting-management-system-frontend/index.html",
-    "main.8c86d8e2.css.map": "/U-KIDS/general-meeting-management-system-frontend/static/css/main.8c86d8e2.css.map",
-    "main.0138ff5f.js.map": "/U-KIDS/general-meeting-management-system-frontend/static/js/main.0138ff5f.js.map"
+    "main.css": "/general-meeting-management-system-frontend/static/css/main.8c86d8e2.css",
+    "main.js": "/general-meeting-management-system-frontend/static/js/main.b7da9064.js",
+    "static/media/paran_logo.png": "/general-meeting-management-system-frontend/static/media/paran_logo.7c162b6e5d952e1ab86f.png",
+    "index.html": "/general-meeting-management-system-frontend/index.html",
+    "main.8c86d8e2.css.map": "/general-meeting-management-system-frontend/static/css/main.8c86d8e2.css.map",
+    "main.b7da9064.js.map": "/general-meeting-management-system-frontend/static/js/main.b7da9064.js.map"
   },
   "entrypoints": [
     "static/css/main.8c86d8e2.css",
-    "static/js/main.0138ff5f.js"
+    "static/js/main.b7da9064.js"
   ]
 }
