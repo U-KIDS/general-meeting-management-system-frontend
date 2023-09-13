@@ -158,9 +158,6 @@
   
 /* 모바일 스타일 */
 @media (max-width: 600px) {
-    .User-container{
-    }
-
     .User-header-container{
         min-height: 50px;
     }
