@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/general-meeting-management-system-frontend/static/css/main.8c86d8e2.css",
+    "main.js": "/general-meeting-management-system-frontend/static/js/main.2e88c2b3.js",
+    "static/media/paran_logo.png": "/general-meeting-management-system-frontend/static/media/paran_logo.7c162b6e5d952e1ab86f.png",
+    "index.html": "/general-meeting-management-system-frontend/index.html",
+    "main.8c86d8e2.css.map": "/general-meeting-management-system-frontend/static/css/main.8c86d8e2.css.map",
+    "main.2e88c2b3.js.map": "/general-meeting-management-system-frontend/static/js/main.2e88c2b3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8c86d8e2.css",
+    "static/js/main.2e88c2b3.js"
+  ]
+}
